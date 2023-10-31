@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import { Route, Routes, Outlet } from 'react-router-dom';
+import Home from './Components/Home/Home';
+import Detail from './Components/Detail/Detail';
+import Header from './Components/Header/Header';
+import './scss/commons.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Routes>
+        <Route path='devjobs-web-app' element={<Layout/>}>
+          <Route index element={<Home/>}></Route>
+          <Route path='detail' element={<Detail/>}></Route>
+        </Route>
+      </Routes>
+    </Fragment>
+  );
+}
+
+function Layout(){
+  return(
+    <section id='container'>
+      <Header></Header>
+      <Outlet></Outlet>
+    </section>
   );
 }
 

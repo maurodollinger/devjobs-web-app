@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap');
+@import './mixins.scss';
+
+//$darkMode:false;
+$base-font : 16px;
+
+body{
+    font-size: $base-font;
+    font-family: Kumbh Sans;
+    background-color: #F4F6F8;
+
+    &.darkMode {
+        @media(prefers-color-scheme: dark){
+            background: #121721;
+        }
+    }
+}
+
+#root{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &::after{
+        height: 10rem;
+        background-color: #5964E0;
+        width: 50%;
+        content: '';
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+#container{
+    max-width: 90rem;
+    width: 100%;
+}
+
+h1,h2,h3,h4,p{
+    color: #19202D;
+    font-style: normal;
+    @include darkMode {
+        color:white;
+    }
+}
+
+h1{
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: normal;
+}
+
+h2{
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: normal;
+}
+
+h3{
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: normal;
+}
+
+h4{
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: normal;
+}
+
+p{    
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.625rem; /* 162.5% */
+}

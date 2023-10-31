@@ -1,0 +1,16 @@
+#header{
+    height: 10rem;
+    background-image: url('./img/desktop/bg-pattern-header.svg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .container{
+        width: 69.375rem;
+    }
+    .logo{
+        width: 7.1875rem;
+        height: 2rem;
+        flex-shrink: 0; 
+        background-image: url('./img/logo.svg');
+    }
+}
