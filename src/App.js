@@ -9,17 +9,17 @@ function App() {
   return (
     <Fragment>
       <Routes>
-        <Route path='devjobs-web-app' element={<Layout/>}>
-          <Route index element={<Home/>}></Route>
-          <Route path='detail' element={<Detail/>}></Route>
+        <Route path='devjobs-web-app' element={<Layout />}>
+          <Route index element={<Home />}></Route>
+          <Route path='detail' element={<Detail />}></Route>
         </Route>
       </Routes>
     </Fragment>
   );
 }
 
-function Layout(){
-  return(
+function Layout() {
+  return (
     <section id='container'>
       <Header></Header>
       <Outlet></Outlet>
