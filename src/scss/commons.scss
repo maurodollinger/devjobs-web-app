@@ -20,6 +20,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    
     &::after{
         height: 10rem;
         background-color: #5964E0;
@@ -29,6 +30,11 @@ body{
         position: absolute;
         top: 0;
         right: 0;
+    }
+    @media screen and (max-width:767px){
+        &::after{
+            height: 8.5rem;
+        }
     }
 }
 

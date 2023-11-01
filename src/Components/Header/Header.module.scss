@@ -1,16 +1,72 @@
 #header{
-    height: 10rem;
-    background-image: url('./img/desktop/bg-pattern-header.svg');
+    height: 10rem;    
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media screen and (min-width: 1024px){
+      background-image: url('./img/desktop/bg-pattern-header.svg');
+      .container{
+        margin: 0 10.3rem;
+      }
+    }
+    @media screen and (max-width: 1023px) and (min-width: 375px){
+      background-image: url('./img/tablet/bg-pattern-header.svg');
+      .container{
+        margin: 0 2.44rem;
+      }
+    }
+    @media screen and (max-width:374px){
+      background-image: url('./img/mobile/bg-pattern-header.svg');
+      height: 8.5rem;
+      .container{
+       margin: 0 1.5rem;
+      }
+    }
     .container{
-        width: 69.375rem;
+      position: relative;
+      width: 100%;
     }
     .logo{
-        width: 7.1875rem;
-        height: 2rem;
-        flex-shrink: 0; 
-        background-image: url('./img/logo.svg');
+      width: 7.1875rem;
+      height: 2rem;
+      position: absolute;
+      left: 0;
+      top:calc(50% - 2rem);
+      flex-shrink: 0; 
+      background-image: url('./img/logo.svg');
     }
+    .toggleScreen{
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+     width: 7rem;
+      height: 1.5rem;
+      flex-shrink: 0;
+      top: calc(50% - 1.5rem);
+    }
+    .circleAnimationOut {
+       animation: moveCircleOut 0.1s ease-in-out; 
+    }
+    .circleAnimationIn {
+        animation: moveCircleIn 0.1s ease-in-out; 
+     }
+}
+
+@keyframes moveCircleOut {
+  0% {
+    cx: 48; 
+  }
+  100% {
+    cx: 72; 
+  }
+}
+
+@keyframes moveCircleIn {
+  0% {
+    cx: 72; 
+  }
+  100% {
+    cx: 48; 
+  }
 }
