@@ -1,0 +1,104 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: #000;
+    opacity: 0;
+    transition: opacity 0.2s;
+   .fadeIn &{        
+         opacity: 0.4965;
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    margin: 0 auto;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+
+
+    opacity: 0;
+    transition: opacity 0.2s;
+    &.fadeIn{
+        opacity: 1;
+    }
+    .modalContent{
+         z-index: 100;
+        width: 20.4375rem;
+        height: 13.5625rem;
+        
+        div:first-child{
+            height: 4.5rem;
+            position: relative;
+            border-bottom: 0.0625rem solid rgba(110, 128, 152, 0.2);
+            input{
+                width: 100%;
+                height: 4.5rem;
+                outline: none;
+                color: #19202D;
+                font-family: Kumbh Sans;
+                font-size: 1rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                background: transparent;
+                border: 0;
+                padding-left: 3.56rem;
+            }
+            label{
+                position: absolute;
+                top: calc(50% - 10px);
+                left: 0;
+                width: 100%;
+                height: 4.5rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                pointer-events: none;
+                opacity: 0.5;
+                transition: opacity 0.1s;
+                padding-left: 3.56rem;
+            }
+            span{
+                position: absolute;
+                width: 1.0625rem;
+                height: 1.5rem;
+                left:1.44rem;
+                top:1.75rem;
+                background: url('./img/icon-location.svg');
+            }
+        }
+        div:last-child{
+            padding: 1.5rem;
+            position: relative;
+        }
+        button{
+            height: 3rem;
+           // flex-shrink: 0;
+              width: 17.4375rem;
+            border-radius: 0.3125rem;
+            background: #5964E0;
+            color: #FFF;
+            font-family: Kumbh Sans;
+            font-size: 1rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            border: 0;
+            cursor: pointer;
+            &:hover{
+                background: #939BF4;
+            }
+        }
+    }
+}
+

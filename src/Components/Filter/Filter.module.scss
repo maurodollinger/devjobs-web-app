@@ -2,6 +2,7 @@
 #filter{
     form{
         display: flex;
+        position: relative;
     }
     padding: 0 10.3rem;
     width: 100%;
@@ -65,47 +66,9 @@
         border-right: 0.0625rem solid rgba(110, 128, 152, 0.2);
     }
 
-    .customCheckbox{
-        min-width: 9.25rem;
-        width: 100%;
-        display: inline-flex;
-        align-items: center;
-        gap: 1rem;
-        padding-left: 2rem;
-        cursor: pointer;
-        input{
-            display: none;
-        }
-        .checkmark{
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: 0.1875rem;
-            opacity: 0.1035;
-            background: #19202D;
-            flex-shrink: 0;
-        }
-        input:checked + .checkmark{
-            opacity: 1;
-            background-color: #5964E0!important;
-            background-image: url('./img/icon-check.svg');
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        .textCheckmarkDesktop, .textCheckmarkMobile{
-            white-space: pre-line;
-            overflow: hidden;
-            text-overflow: clip;
-            min-width: 4.2rem;
-            color: #19202D;
-            font-size: 1rem;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-        }
-    }
+    
 
     button{
-        width: 7.6875rem;
         height: 3rem;
        // flex-shrink: 0;
         border-radius: 0.3125rem;
@@ -134,6 +97,9 @@
             justify-content: center;
             align-items: center;
         } 
+        button{
+            width: 7.6875rem;
+        }
     }
     
     @media screen and (min-width: 1024px){
@@ -155,11 +121,11 @@
                 padding: 0 4.5rem;
             }
         }
-        .textCheckmarkMobile{
+        .filterSearchMobile{
             display: none;
         }
     }
-    @media screen and (max-width: 1023px) and (min-width: 375px){
+    @media screen and (max-width: 1023px) and (min-width: 750px){
         .leftInput{
             max-width: calc((13.88rem / 43.0625rem) * 100%);
         }
@@ -171,10 +137,7 @@
                 }
 
             }   
-            .customCheckbox{
-                min-width: 6.75rem;
-                padding-left: 1.25rem;
-            }
+            
                     
         }
         .leftInput{
@@ -182,8 +145,62 @@
                 padding: 0 4rem;
             }
         }
-        .textCheckmarkDesktop{
+        .filterSearchMobile{
             display: none;
         }
     }
+    @media screen and (max-width:749px) {
+        padding: 0 1.5rem;
+        .leftInput{
+            .searchIcon{
+                display: none;
+            }
+            input,label{
+                padding: 0 1.5rem;
+            }
+        }
+        .rightInputs{
+            display: none;
+        }
+        .filterSearchMobile{
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 5rem;
+            gap: 1rem;
+            button{
+                width: 3rem;
+                span{
+                    display: block;
+                    width: inherit;
+                    height: inherit;
+                    background-image: url('./img/icon-search-white.svg');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+            span.filterIcon{
+                display: block;
+                width: 1.248rem;
+                height: 1.25rem;
+                flex-shrink: 0;
+            }
+        }
+    }
+    .labelTextMobile{
+        display: none;
+    }
+    @media screen and (max-width:350px) {
+        .labelTextDesktop{
+            display: none;
+        }
+        .labelTextMobile{
+            display: block;
+        }
+    }
+    
 }

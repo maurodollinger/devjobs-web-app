@@ -16,6 +16,10 @@
         margin: 0 2.44rem;
       }
     }
+    @media screen and (max-width: 750px){
+      background-position: center;
+      background-repeat: no-repeat;
+    }
     @media screen and (max-width:374px){
       background-image: url('./img/mobile/bg-pattern-header.svg');
       height: 8.5rem;

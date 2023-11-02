@@ -1,0 +1,59 @@
+.customCheckbox{
+    min-width: 9.25rem;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 2rem;
+    cursor: pointer;
+    input{
+        display: none;
+    }
+    .checkmark{
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 0.1875rem;
+        opacity: 0.1035;
+        background: #19202D;
+        flex-shrink: 0;
+    }
+    input:checked + .checkmark{
+        opacity: 1;
+        background-color: #5964E0!important;
+        background-image: url('./img/icon-check.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .textCheckmarkDesktop, .textCheckmarkMobile{
+        white-space: pre-line;
+        overflow: hidden;
+        text-overflow: clip;
+        min-width: 4.2rem;
+        color: #19202D;
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+    @media screen and (min-width: 1024px){
+        .textCheckmarkMobile{
+            display: none;
+        }
+    }
+    @media screen and (max-width: 1023px) and (min-width: 750px){
+        .customCheckbox{
+            min-width: 6.75rem;
+            padding-left: 1.25rem;
+        }
+        .textCheckmarkDesktop{
+            display: none;
+        }
+    }
+    @media screen and (max-width:749px) {
+        padding-left: 0rem;
+        padding-bottom: 1.5rem;
+        .textCheckmarkMobile{
+            display: none;
+        }
+    }
+}
