@@ -1,0 +1,85 @@
+#jobs{
+   display: grid;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   .container{
+    width: 100%;
+    display: grid;
+   // grid-template-columns: repeat(3, 1fr);
+   }
+   @media screen and (min-width: 1024px){
+     margin-top: 4.56rem;
+    .container{
+      margin: 0 10.3rem;
+      gap: 1.88rem;
+
+    grid-template-columns: repeat(auto-fit,minmax(20.435rem,1fr));
+    }
+  }
+  
+  @media screen and (max-width: 1023px) and (min-width: 750px){
+    margin-top: 3.56rem;
+    .container{
+      margin: 0 2.44rem;
+      gap: 0.69rem;
+      grid-template-columns: repeat(auto-fit,minmax(20.435rem,1fr));
+    }
+  }
+  @media screen and (max-width: 749px) and (min-width: 375px){
+    
+    
+    .container{
+      margin: 1.5rem;
+    }
+  }
+  @media screen and (max-width:374px){
+    .container{
+     margin: 0 1.5rem;
+     grid-template-columns: repeat(auto-fit,1fr);
+    }
+  }
+}
+
+.jobCard{
+  //  max-width: 21.875rem;
+    height: 14.25rem;
+    padding: 2rem;
+    margin:2rem 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .jobLogo{
+        position: absolute;
+        top:-1.56rem;
+        width: 3.125rem;
+        height: 3.125rem;
+        flex-shrink: 0;
+        border-radius: 0.9375rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .info{
+      display: flex;
+      flex-direction: column;
+      height: 5.5rem;
+      margin-top: 0.5rem;
+      .p{
+        color: #6E8098;
+        line-height: normal;
+        span{
+          margin:0 0.75rem;
+        }
+      }
+      h3{
+        margin:1rem 0;
+      }
+    }
+   
+    h4.location{
+      color:#5964E0;
+     }
+}
