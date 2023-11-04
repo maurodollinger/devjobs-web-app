@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styles from './JobsSection.module.scss';
 import Card from '../UI/Card/Card';
 import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 export const JobCard = ({job}) =>{
@@ -10,37 +11,45 @@ export const JobCard = ({job}) =>{
   const currentPath = location.pathname;
 
   return (
-    <Card  className={styles.jobCard}>
-      <div className={styles.jobLogo} style={{backgroundColor:job.logoBackground}}>
-        <img src={`${currentPath}${fixAssetPath(job.logo)}`} alt={job.company}></img>
-      </div>
-      <div className={styles.info}>
-        <p className={styles.p}>
-          {job.postedAt}
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
-              <circle cx="2" cy="2" r="2" fill="#6E8098"/>
-            </svg>
-          </span>
-          {job.contract}
-        </p>
-        
-        <h3>{job.position}</h3>
-        <p className={styles.p}>{job.company}</p>
-      </div>      
-      <h4 className={styles.location}>{job.location}</h4>
-    </Card>
+    <Link to={`${currentPath}/detail/${job.id}`}>
+      <Card  className={styles.jobCard}>
+        <div className={styles.jobLogo} style={{backgroundColor:job.logoBackground}}>
+          <img src={`${currentPath}${fixAssetPath(job.logo)}`} alt={job.company}></img>
+        </div>
+        <div className={styles.info}>
+          <p className={styles.p}>
+            {job.postedAt}
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                <circle cx="2" cy="2" r="2" fill="#6E8098"/>
+              </svg>
+            </span>
+            {job.contract}
+          </p>
+          
+          <h3>{job.position}</h3>
+          <p className={styles.p}>{job.company}</p>
+        </div>      
+        <h4 className={styles.location}>{job.location}</h4>
+      </Card>
+    </Link>
   );
 };
 
 const JobsSection =({data})=>{
 
   return(
-    <section id={styles.jobs}>
-      <div className={styles.container}>
-        {data.map((job,index)=><JobCard job={job} key={index}/>)}
-      </div>      
-    </section>);
+    <Fragment>
+      <section id={styles.jobs}>
+        <div className={styles.container}>
+          {data.map((job,index)=><JobCard job={job} key={index}/>)}        
+        </div>      
+           
+      </section>
+      <div className={styles.loadMore}>
+        <button>Load More</button>
+      </div> 
+    </Fragment>);
 };
 
 JobsSection.propTypes = {

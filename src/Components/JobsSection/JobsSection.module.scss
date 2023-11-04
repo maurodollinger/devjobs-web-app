@@ -1,9 +1,11 @@
 #jobs{
-   display: grid;
    display: flex;
    align-items: center;
    justify-content: center;
    width: 100%;
+   a{
+    text-decoration: none;
+   }
    .container{
     width: 100%;
     display: grid;
@@ -82,4 +84,31 @@
     h4.location{
       color:#5964E0;
      }
+}
+
+.loadMore{
+  margin: 1.5rem 0 3.81rem;
+  @media screen and (max-width: 750px) {
+    margin: 0rem 0 3.81rem;
+  }
+  button{
+    border-radius: 0.3125rem;
+    background: #5964E0;
+    width: 8.8125rem;
+    height: 3rem;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    &:hover{
+      background: #939BF4;
+    }
+  }
+
 }
