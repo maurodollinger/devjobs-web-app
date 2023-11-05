@@ -4,7 +4,7 @@ import styles from './JobsSection.module.scss';
 import Card from '../UI/Card/Card';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-
+import Button from '../UI/Button/Button';
 
 export const JobCard = ({job}) =>{
   const location = useLocation();
@@ -47,7 +47,7 @@ const JobsSection =({data})=>{
            
       </section>
       <div className={styles.loadMore}>
-        <button>Load More</button>
+        <Button>Load More</Button>
       </div> 
     </Fragment>);
 };

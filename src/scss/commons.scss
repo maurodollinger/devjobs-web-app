@@ -92,4 +92,16 @@ p{
     span.filterIconMobile svg path{
         fill:#FFFFFF!important;
     }
+    .headerButton{
+        button{
+            background: rgba(255, 255, 255, 0.1)!important;
+            color: #FFF!important;
+            &:hover{
+                background: rgba(255, 255, 255, 0.25)!important;
+            }
+        }       
+    }
+    footer{
+        background-color: #19202D!important;
+    }
 }

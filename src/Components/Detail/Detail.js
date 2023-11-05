@@ -4,13 +4,14 @@ import Card from '../UI/Card/Card';
 import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router';
 import jsonData from '../../data/data.json';
+import Button from '../UI/Button/Button';
 
 const Detail = () => {
   const location = useLocation();
   const currentPath = location.pathname.split('/')[1];
   const { id } = useParams();
   const job = jsonData.find((j) => j.id === parseInt(id));
-
+  
   return (
     <section id={styles.detail}>
       <div className={styles.container}>
@@ -21,23 +22,37 @@ const Detail = () => {
                 <img src={`/${currentPath}${fixAssetPath(job.logo)}`} alt={job.company}></img>
               </div>
               <div className={styles.dh_info}>
-                <h3>{job.company}</h3>
-                <p>{job.website}</p>
+                <div>
+                  <h3>{job.company}</h3>
+                  <p>{job.website}</p>
+                </div>
+                <div className='headerButton'>
+                  <a target='_blank' href={job.website} rel="noreferrer">
+                    <Button>Company Site</Button>
+                  </a>                  
+                </div>
               </div>
             </Card>
             <Card className={styles.detailCard}>
               <div>
-                <p className={styles.p}>
-                  {job.postedAt}
-                  <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
-                      <circle cx="2" cy="2" r="2" fill="#6E8098"/>
-                    </svg>
-                  </span>
-                  {job.contract}
-                </p>
-                <h1>{job.position}</h1>
-                <h4>{job.location}</h4>
+                <div>
+                  <p className={styles.p}>
+                    {job.postedAt}
+                    <span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4" fill="none">
+                        <circle cx="2" cy="2" r="2" fill="#6E8098"/>
+                      </svg>
+                    </span>
+                    {job.contract}
+                  </p>
+                  <h1>{job.position}</h1>
+                  <h4>{job.location}</h4>
+                </div>
+                <div>
+                  <a href={job.apply} target='_blank' rel="noreferrer">
+                    <Button>Apply Now</Button>
+                  </a>
+                </div>
               </div>
               <p>{job.description}</p>
               <h3>Requirements</h3>
@@ -55,6 +70,19 @@ const Detail = () => {
                 ))}
               </ul>
             </Card>
+            <footer>
+              <div className={styles.container}>
+                <div>
+                  <h3>{job.position}</h3>
+                  <p>{job.company}</p>
+                </div>
+                <a href={job.apply} target='_blank' rel="noreferrer">
+                  <Button>
+                      Apply Now
+                  </Button>
+                </a>
+              </div>
+            </footer>
           </Fragment>
         )}
       </div>
