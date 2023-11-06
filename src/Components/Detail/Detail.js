@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import ReactDOM from 'react-dom';
 import styles from './Detail.module.scss';
 import Card from '../UI/Card/Card';
 import { useParams } from 'react-router-dom';
@@ -70,7 +71,7 @@ const Detail = () => {
                 ))}
               </ul>
             </Card>
-            <footer>
+            {ReactDOM.createPortal(<footer>
               <div className={styles.container}>
                 <div>
                   <h3>{job.position}</h3>
@@ -82,7 +83,8 @@ const Detail = () => {
                   </Button>
                 </a>
               </div>
-            </footer>
+            </footer>,document.getElementById('root-footer'))}
+            
           </Fragment>
         )}
       </div>
