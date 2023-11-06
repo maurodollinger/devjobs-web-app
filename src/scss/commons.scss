@@ -46,6 +46,9 @@ body{
 h1,h2,h3,h4,p{
     color: #19202D;
     font-style: normal;
+}
+
+h1,h2,h3,h4{
     @include darkMode {
         color:white;
     }
@@ -83,7 +86,7 @@ p{
 
 /// GLOBALS DARK MODE
 .darkMode {
-    label,input,span,li{
+    label,input,span{
        color: white!important;
     }
     .checkmark{

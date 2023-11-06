@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment,useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './JobsSection.module.scss';
 import Card from '../UI/Card/Card';
@@ -37,18 +37,27 @@ export const JobCard = ({job}) =>{
 };
 
 const JobsSection =({data})=>{
+  const [visibleData,setVisibleData] = useState(12);
 
+  const handleVisibleData = () =>{
+    setVisibleData(prevState=>prevState+12);
+  };
   return(
     <Fragment>
       <section id={styles.jobs}>
         <div className={styles.container}>
-          {data.map((job,index)=><JobCard job={job} key={index}/>)}        
+          {data.slice(0,visibleData).map((job,index)=><JobCard job={job} key={index}/>)}        
         </div>      
            
       </section>
+      
       <div className={styles.loadMore}>
-        <Button>Load More</Button>
+        {visibleData < data.length && (
+          <Button onClick={handleVisibleData}>Load More</Button>
+        )}
       </div> 
+      
+      
     </Fragment>);
 };
 

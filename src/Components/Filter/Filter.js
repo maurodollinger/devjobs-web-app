@@ -1,16 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import Card from '../UI/Card/Card';
 import styles from './Filter.module.scss';
 import Context from '../Context/context';
 import CustomCheckbox from '../UI/CustomCheckbox/CustomCheckbox';
 import Button from '../UI/Button/Button';
 
-const Filter = () => {
+const Filter = ({handleFilter}) => {
   const [inputTextValue, setInputTextValue] = useState('');
   const [labelTextVisible, setLabelTextVisible] = useState(true);
   const [inputLocationValue, setInputLocationValue] = useState('');
   const [labelLocationVisible, setLabelLocationVisible] = useState(true);
- 
+
+  const [isFullTimeChecked, setIsFullTimeChecked] = useState(false);
+
   const {handleModal} = useContext(Context); 
 
   const handleInputChange = (e) => {
@@ -43,6 +46,34 @@ const Filter = () => {
     }
    
   };
+
+  const handleCheckboxChange = () => {
+    setIsFullTimeChecked((prevState)=>{    
+      return !prevState;
+    });
+  };
+
+  const handleSearch = () =>{
+    sendFilter();
+  };
+
+  const sendFilter = ()=>{
+    handleFilter({value:inputTextValue,location:inputLocationValue,fullTime:isFullTimeChecked});
+  };
+
+  useEffect(()=>{
+    let timer; 
+    const delayedFilter = () =>{
+      timer = setTimeout(()=>{
+        sendFilter();
+      },500);
+    };
+    clearTimeout(timer);
+    delayedFilter();
+    return ()=>{
+      clearTimeout(timer);
+    };
+  },[inputTextValue,inputLocationValue,isFullTimeChecked,handleFilter]);
 
   return (
     <section id={styles.filter}>
@@ -83,8 +114,8 @@ const Filter = () => {
               </label>
             </div>
             <div>
-              <CustomCheckbox/>
-              <Button>Search</Button>
+              <CustomCheckbox isChecked={isFullTimeChecked} onClick={handleCheckboxChange}/>
+              <Button onClick={handleSearch}>Search</Button>
             </div>
           </div>
           <div className={styles.filterSearchMobile}>
@@ -98,6 +129,10 @@ const Filter = () => {
         </form>
       </Card>
     </section>);
+};
+
+Filter.propTypes = {
+  handleFilter: PropTypes.func.isRequired,
 };
 
 export default Filter;

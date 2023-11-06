@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import styles from './Header.module.scss';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -20,7 +21,7 @@ const Header = () => {
   return (
     <header id={styles.header}>
       <div className={styles.container}>
-        <div className={styles.logo}></div>
+        <Link to=''><div className={styles.logo}></div></Link>
         <div className={styles.toggleScreen} onClick={handleDarkMode}>
           <svg xmlns="http://www.w3.org/2000/svg" width="112" height="24" viewBox="0 0 112 24" fill="none">
             <rect x="36" width="48" height="24" rx="12" fill="white" />

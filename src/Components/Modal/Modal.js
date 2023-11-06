@@ -9,6 +9,7 @@ import CustomCheckbox from '../UI/CustomCheckbox/CustomCheckbox';
 const Overlay = (props) =>{
   const [inputValue, setInputValue] = useState('');
   const [labelVisible, setLabelVisible] = useState(true);
+  const [isFullTimeChecked, setIsFullTimeChecked] = useState(false);
 
   const handleInputChange = (e) => {
     const newValue = e.target.value;
@@ -28,6 +29,12 @@ const Overlay = (props) =>{
     props.closeModal();
   };
 
+  const handleCheckboxChange = () => {
+    setIsFullTimeChecked((prevState)=>{    
+      return !prevState;
+    });
+  };
+
   return (
     <div className={`${styles.modal} ${props.className}`}  >
       <div className={styles.backdrop} onClick={props.closeModal}></div>
@@ -42,7 +49,7 @@ const Overlay = (props) =>{
           <label style={{ opacity: labelVisible ? .5 : 0 }}>Filter by Location...</label>
         </div>
         <div>
-          <CustomCheckbox/>
+          <CustomCheckbox isChecked={isFullTimeChecked} onClick={handleCheckboxChange}/>
           <button onClick={search}>Search</button>
         </div>
       </Card>
