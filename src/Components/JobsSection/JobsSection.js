@@ -80,8 +80,9 @@ function fixAssetPath(inputString){
 }
 
 function fixURLPath(inputString){
+
   if (inputString && inputString.charAt(inputString.length-1) === '/') {
-    return inputString.slice(0.-1); 
+    return inputString.slice(0,inputString.length-1); 
   } else {
     return inputString; 
   }
