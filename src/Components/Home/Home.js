@@ -11,8 +11,10 @@ import {ref,child,get} from 'firebase/database';
 
 const Home = () =>{
   const [data,setData] = useState([]);
+  const [allData,setAllData] = useState([]);
+  const [filter,setFilter] = useState({fulltime:false});
   const [modalOpen, setModalOpen] = useState(false);
-
+  
   useEffect(() => {
     const dbRef = ref(database);
     get(child(dbRef, '/'))
@@ -20,13 +22,16 @@ const Home = () =>{
         if (snapshot.exists()) {
           const data = snapshot.val();
           setData(data);
+          setAllData(data);
         } else {
           setData(jsonData);
+          setAllData(jsonData);
         }
       })
       .catch((error) => {
         console.log(error);
         setData(jsonData);
+        setAllData(jsonData);
       });
   }, []);
 
@@ -34,14 +39,12 @@ const Home = () =>{
     setModalOpen((prev)=>!prev);
   };
 
-  const handleFilter = (filter)=>{
-    filterJobs(filter);
-  };
-
   const filterJobs = (filter) =>{
-    const filteredJobs = jsonData.filter(job=>{
+    const isFullTime = filter.fulltime !== undefined ? filter.fulltime : false;
+
+    const filteredJobs = data.filter(job=>{
       // filter by full time
-      if(filter.fullTime && job.contract !== 'Full Time') return false;
+      if(filter.fulltime && job.contract !== 'Full Time') return false;
       // filter by value // e.g Senior Software Engineer
       if (filter.value && !job.position.toLowerCase().includes(filter.value.toLowerCase()) && !job.company.toLowerCase().includes(filter.value.toLowerCase())) {
         return false;
@@ -50,16 +53,30 @@ const Home = () =>{
       if(filter.location && !job.location.toLowerCase().includes(filter.location.toLowerCase())) return false;
       return true;
     });
-    setData(filteredJobs);
+    if (filter.value || filter.location ||isFullTime) {
+      setData(filteredJobs);
+    } else {
+      setData(allData);
+    }
   };
+
+  const filterSearch = (_filter) =>{
+    setFilter(_filter);    
+  };
+
+  useEffect(()=>{
+    filterJobs(filter);
+  },[filter]);
 
   return(
     <section className={styles.Home}>
       <ContextProvider 
-        handleModal={handleModal}>     
-        <Filter handleFilter={handleFilter}></Filter>
+        handleModal={handleModal}
+        filterSearch={filterSearch}
+      >     
+        <Filter _isChecked={filter.fulltime}></Filter>
         <JobsSection data={data}/>
-        {(modalOpen) && <Modal onClose={handleModal}></Modal>}
+        {(modalOpen) && <Modal isChecked={filter.fulltime} onClose={handleModal}></Modal>}
       </ContextProvider>
     </section>
   );

@@ -5,11 +5,12 @@ import Context from '../Context/context';
 import Card from '../UI/Card/Card';
 import styles from './Modal.module.scss';
 import CustomCheckbox from '../UI/CustomCheckbox/CustomCheckbox';
+import PropTypes from 'prop-types';
 
 const Overlay = (props) =>{
   const [inputValue, setInputValue] = useState('');
   const [labelVisible, setLabelVisible] = useState(true);
-  const [isFullTimeChecked, setIsFullTimeChecked] = useState(false);
+  const [isFullTimeChecked, setIsFullTimeChecked] = useState(props.isChecked);
 
   const handleInputChange = (e) => {
     const newValue = e.target.value;
@@ -26,6 +27,7 @@ const Overlay = (props) =>{
   };
 
   const search = () =>{
+    props.onClickSearch({location:inputValue,fulltime:isFullTimeChecked});
     props.closeModal();
   };
 
@@ -34,6 +36,8 @@ const Overlay = (props) =>{
       return !prevState;
     });
   };
+
+
 
   return (
     <div className={`${styles.modal} ${props.className}`}  >
@@ -56,9 +60,9 @@ const Overlay = (props) =>{
     </div>);
 };
 
-const Modal = () =>{
+const Modal = (props) =>{
   const [fadeIn,setFadeIn] = useState(false);
-  const {handleModal} = useContext(Context);
+  const {handleModal, filterSearch} = useContext(Context);
 
   useEffect(() => {
     setFadeIn(true);
@@ -66,8 +70,12 @@ const Modal = () =>{
 
   return (
     <Fragment>
-      {ReactDOM.createPortal(<Overlay className={fadeIn ? styles.fadeIn : ''} closeModal={()=>handleModal()}/>,document.getElementById('root-overlay'))}
+      {ReactDOM.createPortal(<Overlay className={fadeIn ? styles.fadeIn : ''} isChecked={props.isChecked} onClickSearch={filterSearch} closeModal={()=>handleModal()}/>,document.getElementById('root-overlay'))}
     </Fragment>);
+};
+
+Modal.propTypes = {
+  isChecked: PropTypes.bool.isRequired,
 };
 
 export default Modal;

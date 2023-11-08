@@ -1,15 +1,21 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, {useState} from 'react';
 
 const Context = React.createContext({
-  handleModal:()=>{}
+  handleModal:()=>{},
+  filterSearch:()=>{}
 });
 
 export const ContextProvider = (props) => {
+  const [filterObject, setFilterObject] = useState({value:'',location:'',fulltime:false});
+
   return (
     <Context.Provider
       value={{
-        handleModal:props.handleModal
+        handleModal:props.handleModal,
+        filterSearch:props.filterSearch,
+        filterObject,
+        setFilterObject
       }}
     >
       {props.children}

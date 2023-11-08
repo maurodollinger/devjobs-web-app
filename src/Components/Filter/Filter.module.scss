@@ -30,7 +30,7 @@
         }
         label{
             position: absolute;
-            top: calc(50% - 10px);
+            top: calc(50% - 13px);
             left: 0;
             width: 100%;
             white-space: nowrap;
@@ -72,17 +72,20 @@
     
     .rightInputs{
         display: flex;
-        div{
-            width: 50%;
+        div:first-child{
+            width: 46.5%;
         }
         div:last-child{
+            width: 53.5%;
             display: flex;
             justify-content: center;
             align-items: center;
         } 
         button{
             width: 7.6875rem;
-            flex-shrink: 1;
+            @media screen and (max-width:1224px) and (min-width:750px){
+                flex-shrink: 1;
+            }
         }
     }
     
@@ -123,8 +126,7 @@
                     padding: 0 3.56rem;
                 }
 
-            }   
-            
+            }  
                     
         }
         .leftInput{
