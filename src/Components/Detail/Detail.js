@@ -9,7 +9,7 @@ import Button from '../UI/Button/Button';
 
 const Detail = () => {
   const location = useLocation();
-  const currentPath = location.pathname.split('/')[1];
+  const currentPath = location.pathname.split('/')[1] + '/' + location.pathname.split('/')[2];
   const { id } = useParams();
   const job = jsonData.find((j) => j.id === parseInt(id));
   

@@ -9,7 +9,7 @@ function App() {
   return (
     <Fragment>
       <Routes>
-        <Route path='devjobs-web-app' element={<Layout />}>
+        <Route path='devjobs-web-app/build' element={<Layout />}>
           <Route index element={<Home />}></Route>
           <Route path='detail/:id' element={<Detail />}></Route>
         </Route>
