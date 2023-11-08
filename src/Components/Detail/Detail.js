@@ -28,9 +28,7 @@ const Detail = () => {
                   <p>{job.website}</p>
                 </div>
                 <div className='headerButton'>
-                  <a target='_blank' href={job.website} rel="noreferrer">
-                    <Button>Company Site</Button>
-                  </a>                  
+                  <Button onClick={()=>{window.open(job.website);}}>Company Site</Button>            
                 </div>
               </div>
             </Card>
@@ -50,9 +48,7 @@ const Detail = () => {
                   <h4>{job.location}</h4>
                 </div>
                 <div>
-                  <a href={job.apply} target='_blank' rel="noreferrer">
-                    <Button>Apply Now</Button>
-                  </a>
+                  <Button onClick={()=>{window.open(job.apply);}}>Apply Now</Button>
                 </div>
               </div>
               <p>{job.description}</p>
@@ -78,9 +74,7 @@ const Detail = () => {
                   <p>{job.company}</p>
                 </div>
                 <a href={job.apply} target='_blank' rel="noreferrer">
-                  <Button>
-                      Apply Now
-                  </Button>
+                  <Button onClick={()=>{window.open(job.apply);}}>Apply Now</Button>
                 </a>
               </div>
             </footer>,document.getElementById('root-footer'))}
