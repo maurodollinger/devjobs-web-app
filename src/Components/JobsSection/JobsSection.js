@@ -11,7 +11,7 @@ export const JobCard = ({job}) =>{
   const currentPath = location.pathname;
 
   return (
-    <Link to={`${currentPath}/detail/${job.id}`}>
+    <Link to={`${fixURLPath(currentPath)}/detail/${job.id}`}>
       <Card  className={styles.jobCard}>
         <div className={styles.jobLogo} style={{backgroundColor:job.logoBackground}}>
           <img src={`${currentPath}${fixAssetPath(job.logo)}`} alt={job.company}></img>
@@ -78,4 +78,11 @@ function fixAssetPath(inputString){
     return inputString; 
   }
 }
-  
+
+function fixURLPath(inputString){
+  if (inputString && inputString.charAt(inputString.length-1) === '/') {
+    return inputString.slice(0.-1); 
+  } else {
+    return inputString; 
+  }
+}
